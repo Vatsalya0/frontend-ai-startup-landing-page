@@ -102,7 +102,7 @@ const FeatureTab = (
       ref={tabRef}
       key={tab.title}
       onMouseEnter={handleTabHover}
-      className="border border-white/15 flex p-2.5 rounded-xl gap-2.5 items-center lg:flex-1 relative"
+      className="border border-white/15 flex p-2.5 rounded-xl gap-2.5 items-center lg:flex-1 relative cursor-pointer hover:bg-purple-800/20"
       onClick={tab.onClick}
     >
       {tab.selected && (
@@ -135,6 +135,41 @@ const FeatureTab = (
 
 export const Features = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+
+  const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
+  const backgroundPositiony = useMotionValue(tabs[0].backgroundPositionY);
+  const backgroundSizeX = useMotionValue(tabs[0].backgroundSizeX);
+
+  const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositiony}%`;
+  const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`;
+
+  const handleSelectTab = (index: number) => {
+    setSelectedTab(index);
+
+    const animateOptions: ValueAnimationTransition = {
+      duration: 2,
+      ease: "easeInOut",
+    };
+
+    animate(
+      backgroundSizeX,
+      [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],
+      animateOptions
+    );
+
+    animate(
+      backgroundPositionX,
+      [backgroundPositionX.get(), tabs[index].backgroundPositionX],
+      animateOptions
+    );
+
+    animate(
+      backgroundPositiony,
+      [backgroundPositiony.get(), tabs[index].backgroundPositionY],
+      animateOptions
+    );
+  };
+
   return (
     <section className="py-20 md:py-24">
       <div className="container">
@@ -150,18 +185,20 @@ export const Features = () => {
             <FeatureTab
               {...tab}
               selected={selectedTab === tabIndex}
-              onClick={() => setSelectedTab(tabIndex)}
+              onClick={() => handleSelectTab(tabIndex)}
               key={tab.title}
             />
           ))}
         </div>
         <div className="border border-white/20 p-2.5 rounded-xl mt-3">
-          <div
+          <motion.div
             className="aspect-video bg-cover border border-white/20 rounded-lg"
             style={{
+              backgroundSize,
+              backgroundPosition,
               backgroundImage: `url(${productImage.src})`,
             }}
-          ></div>
+          ></motion.div>
         </div>
       </div>
     </section>
