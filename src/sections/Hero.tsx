@@ -2,13 +2,8 @@
 
 import { Button } from "@/components/button";
 import StartsBg from "@/assets/stars.png";
-import {
-  motion,
-  useScroll,
-  useMotionValueEvent,
-  useTransform,
-} from "framer-motion";
-import React, { use, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef } from "react";
 
 export const Hero = () => {
   const sectionRef = useRef(null);
@@ -25,8 +20,10 @@ export const Hero = () => {
 
   return (
     <motion.section
-      className="h-[492px] md:h-[800px] flex items-center overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_90%,transparent)]"
+      ref={sectionRef}
+      className="relative h-[492px] md:h-[800px] flex items-center overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_90%,transparent)]"
       style={{
+        position: "relative", // Ensure the section has a non-static position
         backgroundImage: `url(${StartsBg.src})`,
         backgroundPositionY,
       }}
