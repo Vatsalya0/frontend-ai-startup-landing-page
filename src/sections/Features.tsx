@@ -42,11 +42,11 @@ export const Features = () => {
           from small startups to large enterprises, our AI-driven tool has
           revolutionzed the way businesses approach SEO.
         </p>
-        <div className="mt-10 flex flex-col gap-3">
+        <div className="mt-10 flex flex-col lg:flex-row gap-3">
           {tabs.map((tab) => (
             <div
               key={tab.title}
-              className="border border-white/15 flex p-2.5 rounded-xl gap-2.5 items-center"
+              className="border border-white/15 flex p-2.5 rounded-xl gap-2.5 items-center lg:flex-1"
             >
               <div className="h-12 w-12 border border-white/15 rounded-lg inline-flex items-center justify-center">
                 <DotLottiePlayer src={tab.icon} className="h-5 w-5" autoplay />
