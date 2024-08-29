@@ -4,25 +4,16 @@ import {
   DotLottiePlayer,
   DotLottieCommonPlayer,
 } from "@dotlottie/react-player";
-import Image from "next/image";
 import productImage from "@/assets/product-image.png";
 import {
   motion,
-  useScroll,
-  useTransform,
   useMotionValue,
   useMotionTemplate,
   animate,
   ValueAnimationTransition,
 } from "framer-motion";
-import {
-  ComponentPropsWithRef,
-  ComponentPropsWithoutRef,
-  useRef,
-  useState,
-} from "react";
+import { ComponentPropsWithoutRef, useRef, useState } from "react";
 import { useEffect } from "react";
-import { boolean } from "yup";
 
 const tabs = [
   {
