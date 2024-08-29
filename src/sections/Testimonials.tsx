@@ -33,7 +33,7 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="py-20 md:py-24">
+    <section id="testimonials-section" className="py-20 md:py-24">
       <div className="container">
         <h2 className="text-5xl md:text-6xl font-medium text-center tracking-tighter">
           Beyond Expectations.
@@ -47,7 +47,7 @@ export const Testimonials = () => {
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.name}
-                className=" border border-white/15 p-6 md:p-10 rounded-xl bg-[linear-gradient(to_bottom_left,rgb(140,69,266,.3),black)] max-w-xs md:max-w-md flex-none"
+                className="border border-white/15 p-6 md:p-10 rounded-xl bg-[linear-gradient(to_bottom_left,rgb(140,69,266,.3),black)] max-w-xs md:max-w-md flex-none"
               >
                 <div className="text-lg md:text-2xl tracking-tight text-white/90 ">
                   {testimonial.text}
@@ -57,7 +57,7 @@ export const Testimonials = () => {
                     <Image
                       className="rounded-lg h-11 w-11 grayscale "
                       src={testimonial.avatarImg}
-                      alt={`Avtar for ${testimonial.name}`}
+                      alt={`Avatar for ${testimonial.name}`}
                     />
                   </div>
                   <div>
