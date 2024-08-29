@@ -23,6 +23,14 @@ export const CallToAction = () => {
       <div className="container">
         <motion.div
           className="border border-white/15 py-24 rounded-xl overflow-hidden relative"
+          animate={{
+            backgroundPositionX: StartsBg.width,
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 60,
+            ease: "linear",
+          }}
           style={{
             backgroundPositionY,
             backgroundImage: `url(${StartsBg.src})`,
