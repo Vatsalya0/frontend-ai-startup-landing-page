@@ -134,13 +134,14 @@ const FeatureTab = (
 };
 
 export const Features = () => {
+  const featuresRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState(0);
 
   const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
-  const backgroundPositiony = useMotionValue(tabs[0].backgroundPositionY);
+  const backgroundPositionY = useMotionValue(tabs[0].backgroundPositionY);
   const backgroundSizeX = useMotionValue(tabs[0].backgroundSizeX);
 
-  const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositiony}%`;
+  const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositionY}%`;
   const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`;
 
   const handleSelectTab = (index: number) => {
@@ -164,14 +165,14 @@ export const Features = () => {
     );
 
     animate(
-      backgroundPositiony,
-      [backgroundPositiony.get(), tabs[index].backgroundPositionY],
+      backgroundPositionY,
+      [backgroundPositionY.get(), tabs[index].backgroundPositionY],
       animateOptions
     );
   };
 
   return (
-    <section className="py-20 md:py-24">
+    <section id="features-section" ref={featuresRef} className="py-20 md:py-24">
       <div className="container">
         <h2 className="text-5xl md:text-6xl font-medium text-center tracking-tighter">
           Elevate your SEO efforts.

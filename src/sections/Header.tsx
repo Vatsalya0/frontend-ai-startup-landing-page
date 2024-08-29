@@ -1,8 +1,17 @@
+"use client";
+
 import LogoIcon from "@/assets/logo.svg";
 import MenuIcon from "@/assets/icon-menu.svg";
 import { Button } from "@/components/button";
 
 export const Header = () => {
+  const handleScrollToFeatures = () => {
+    const featuresSection = document.getElementById("features-section");
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="py-4 border-b border-white/15 md:border-none sticky top-0 z-10">
       <div className="absolute inset-0 backdrop-blur -z-10 md:hidden"></div>
@@ -16,7 +25,11 @@ export const Header = () => {
           </div>
           <div className="hidden md:block">
             <nav className="flex gap-8 text-white/70 text-sm">
-              <a href="#" className="hover:text-white transition">
+              <a
+                href="#"
+                className="hover:text-white transition"
+                onClick={handleScrollToFeatures}
+              >
                 Features
               </a>
               <a href="#" className="hover:text-white transition">
