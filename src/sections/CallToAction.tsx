@@ -1,47 +1,36 @@
-"use client";
-
 import { Button } from "@/components/button";
 import StartsBg from "@/assets/stars.png";
-import { motion, useScroll, useTransform } from "framer-motion";
-import React, { useRef } from "react";
+import gridLines from "@/assets/grid-lines.png";
 
 export const CallToAction = () => {
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const backgroundPositionY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [-300, 300]
-  );
   return (
-    <motion.section
-      ref={sectionRef}
-      className="relative h-[492px] md:h-[800px] flex items-center overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_90%,transparent)]"
-      style={{
-        position: "relative", // Ensure the section has a non-static position
-        backgroundImage: `url(${StartsBg.src})`,
-        backgroundPositionY,
-      }}
-      animate={{
-        backgroundPositionX: StartsBg.width,
-      }}
-      transition={{
-        repeat: Infinity,
-        ease: "linear",
-        duration: 110,
-      }}
-    >
-      <div className="contianer">
-        <h2>AI-driven SEO for everyone.</h2>
-        <p>Acheive clear, impactful results without the complexity.</p>
+    <section className="py-20 md:py-24">
+      <div className="container">
+        <div
+          className="border border-white/15 py-24 rounded-xl overflow-hidden relative"
+          style={{
+            backgroundImage: `url(${StartsBg.src})`,
+          }}
+        >
+          <div
+            className="absolute inset-0 bg-[rgb(74,32,138)] bg-blend-overlay [mask-image:radial-gradient(50%_50%_at_50%_35%,black,transparent)] "
+            style={{
+              backgroundImage: `url(${gridLines.src})`,
+            }}
+          ></div>
+          <div className="relative">
+            <h2 className="text-5xl md:text-6xl max-w-sm mx-auto tracking-tighter text-center font-medium">
+              AI-driven SEO for everyone.
+            </h2>
+            <p className="text-center text-lg text-white/70 px-4 mt-5">
+              Acheive clear, impactful results without the complexity.
+            </p>
+            <div className="flex justify-center mt-8">
+              <Button>Join waitlist</Button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="flex gap-4 items-center">
-        <Button>Join waitlist</Button>
-      </div>
-    </motion.section>
+    </section>
   );
 };
